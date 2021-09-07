@@ -36,7 +36,9 @@ extension CryptoAPIManager: APIManaging {
                 let object = try self.jsonDecoder.decode(CryptoResponse.self, from: data)
                 if object.success == true {
                     let cryptoLive = try self.jsonDecoder.decode(T.self, from: data)
-                    completion(.success(cryptoLive))
+                    DispatchQueue.main.async {
+                        completion(.success(cryptoLive))
+                    }
                 } else {
                     let cryptoError = try self.jsonDecoder.decode(CryptoError.self, from: data)
                     completion(.failure(cryptoError))

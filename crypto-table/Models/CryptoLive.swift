@@ -13,3 +13,12 @@ struct CryptoLive: Codable {
     let target: String
     let rates: [String: Double]
 }
+
+struct CryptoRow: Codable, Comparable {
+    let name: String
+    let price: Double
+    static func < (lhs: CryptoRow, rhs: CryptoRow) -> Bool {
+        // order from highest price
+        lhs.price > rhs.price
+    }
+}
