@@ -8,9 +8,9 @@
 import Foundation
 
 class CryptoService: CryptoServiceType {
-    let apiManager: CryptoAPIManager
+    let apiManager: APIManaging
 
-    init(apiManager: CryptoAPIManager) {
+    init(apiManager: APIManaging) {
         self.apiManager = apiManager
     }
 

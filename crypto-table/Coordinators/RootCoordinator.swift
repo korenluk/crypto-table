@@ -9,21 +9,31 @@ import UIKit
 
 class RootCoordinator: Coordinating {
     private weak var window: UIWindow?
+    private let resolver: DependencyResolving
 
-    init(window: UIWindow) {
+    init(window: UIWindow, resolver: DependencyResolving) {
         self.window = window
+        self.resolver = resolver
     }
 
     func begin() -> UIViewController {
-        let vc = ViewController()
-        set(rootController: vc)
-        return vc
+        let viewController = createCryptoTableController()
+        set(rootController: viewController)
+        return viewController
     }
 }
 
 private extension RootCoordinator {
     func set(rootController: UIViewController) {
         window?.rootViewController = rootController
+    }
+
+    func createCryptoTableController() -> UIViewController {
+        let navController = UINavigationController()
+        let coordinator = CryptoTableCoordinator(navController: navController, resolver: resolver)
+        let viewController = coordinator.begin()
+        navController.viewControllers = [viewController]
+        return navController
     }
 
 }

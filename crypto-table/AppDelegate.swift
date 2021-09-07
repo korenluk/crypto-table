@@ -13,9 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var coordinator: RootCoordinator?
 
+    let container = DefaultDependencyContainer()
+
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let window = UIWindow(frame: UIScreen.main.bounds)
-        coordinator = RootCoordinator(window: window)
+        coordinator = RootCoordinator(window: window, resolver: container)
         let rootViewController = coordinator?.begin()
 
         window.rootViewController = rootViewController
