@@ -16,14 +16,13 @@ class CryptoTableViewController: UIViewController, CryptoTableViewControlling {
 
     var viewModel: CryptoTableViewModel!
 
-    lazy var table: UITableView = {
+    var table: UITableView = {
         let table = UITableView()
+        table.backgroundColor = .black
         table.separatorColor = .cyan
         table.separatorInset = .zero
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(CryptoCell.self, forCellReuseIdentifier: "cellid")
-        table.dataSource = self
-        table.delegate = self
         return table
     }()
 
@@ -37,9 +36,12 @@ class CryptoTableViewController: UIViewController, CryptoTableViewControlling {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNeedsStatusBarAppearanceUpdate()
+        view.backgroundColor = .black
         navigationItem.title = "Crypto Table"
-        table.isHidden = true
         setup()
+        table.dataSource = self
+        table.delegate = self
         viewModel.delegate = self
         viewModel.downloadCrypto()
     }
@@ -55,15 +57,14 @@ class CryptoTableViewController: UIViewController, CryptoTableViewControlling {
         loadingView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         table.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         table.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        table.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
-        table.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
+        table.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        table.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
     }
 
 }
 
 extension CryptoTableViewController: CryptoTableViewModelDelegate {
     func didDownloadCrypto() {
-        table.isHidden = false
         table.reloadData()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: viewModel.getTarget(), style: .plain, target: nil, action: nil)
         navigationItem.rightBarButtonItem?.tintColor = .white

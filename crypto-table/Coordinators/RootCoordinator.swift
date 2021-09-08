@@ -29,10 +29,19 @@ private extension RootCoordinator {
     }
 
     func createCryptoTableController() -> UIViewController {
-        let navController = UINavigationController()
+        let navController = createNavController()
+
         let coordinator = CryptoTableCoordinator(navController: navController, resolver: resolver)
         let viewController = coordinator.begin()
         navController.viewControllers = [viewController]
+        return navController
+    }
+
+    func createNavController() -> UINavigationController {
+        let navController = UINavigationController()
+        navController.navigationBar.tintColor = .cyan
+        navController.navigationBar.barTintColor = .black
+        navController.navigationBar.barStyle = .black
         return navController
     }
 

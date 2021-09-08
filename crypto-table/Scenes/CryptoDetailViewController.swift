@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 protocol CryptoDetailViewControlling {
     var coordinator: CryptoDetailCoordinating? { get set}
@@ -16,18 +17,19 @@ class CryptoDetailViewController: UIViewController, CryptoDetailViewControlling 
 
     var viewModel: CryptoDetailViewModel!
 
-    lazy var name: UILabel = {
-        let label = UILabel()
-//        label.text = "Name"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    lazy var symbol = makeLabel()
 
-    lazy var maxSupply: UILabel = {
-        let label = UILabel()
-//        label.text = "Max Supply"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    lazy var name = makeLabel()
+
+    lazy var nameFull = makeLabel()
+
+    lazy var maxSupply = makeLabel()
+
+    lazy var image: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
     }()
 
     override func viewDidLoad() {
@@ -38,19 +40,51 @@ class CryptoDetailViewController: UIViewController, CryptoDetailViewControlling 
     }
 
     func setupUI() {
+        view.backgroundColor = .black
+        view.addSubview(symbol)
         view.addSubview(name)
+        view.addSubview(nameFull)
         view.addSubview(maxSupply)
-        name.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        name.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        maxSupply.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        maxSupply.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        view.addSubview(image)
+
+        image.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
+        image.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        image.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        image.heightAnchor.constraint(equalToConstant: 300).isActive = true
+
+        symbol.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        symbol.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 50).isActive = true
+
+        name.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        name.topAnchor.constraint(equalTo: symbol.bottomAnchor, constant: 25).isActive = true
+
+        nameFull.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        nameFull.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 25).isActive = true
+
+        maxSupply.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        maxSupply.topAnchor.constraint(equalTo: nameFull.bottomAnchor, constant: 25).isActive = true
     }
 
     func setupData() {
-        name.text = viewModel.crytoDetail?.nameFull
-        maxSupply.text = viewModel.crytoDetail?.maxSupply
+        guard let cryptoDetail = viewModel.cryptoDetail else {
+            return
+        }
+
+        navigationItem.title = cryptoDetail.name
+
+        symbol.text = "Symbol: " + cryptoDetail.symbol
+        name.text = "Name: " + cryptoDetail.name
+        nameFull.text = "Full Name: " + cryptoDetail.nameFull
+        maxSupply.text = "Max Supply: " + cryptoDetail.maxSupply
+        image.sd_setImage(with: URL(string: viewModel.cryptoDetail?.iconUrl ?? ""), placeholderImage: UIImage(named: "b.square.fill"))
     }
 
+    func makeLabel() -> UILabel {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
+        return label
+    }
 }
 
 extension CryptoDetailViewController: CryptoDetailViewModelDelegate {

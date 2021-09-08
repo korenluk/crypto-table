@@ -13,7 +13,7 @@ class CryptoDetailViewModel: CryptoDetailViewModeling {
 
     internal var crypto: String
 
-    var crytoDetail: CryptoDetail?
+    var cryptoDetail: CryptoDetail?
 
     private let cryptoService: CryptoServiceType
 
@@ -43,7 +43,7 @@ private extension CryptoDetailViewModel {
             switch result {
             case let .success(cryptoList):
                 for (key, value) in cryptoList.crypto where self.crypto == key {
-                    self.crytoDetail = value
+                    self.cryptoDetail = value
                 }
                 self.delegate?.didDownloadCrypto()
             case let .failure(error):
