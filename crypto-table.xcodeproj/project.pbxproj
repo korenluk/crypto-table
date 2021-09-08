@@ -18,8 +18,10 @@
 		5D41423C26E7C63D00111FB2 /* DependencyResolving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D41423B26E7C63D00111FB2 /* DependencyResolving.swift */; };
 		5D41423E26E7CE1900111FB2 /* CryptoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D41423D26E7CE1900111FB2 /* CryptoCell.swift */; };
 		5D41424326E7F2BD00111FB2 /* CryptoDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D41424226E7F2BD00111FB2 /* CryptoDetailCoordinator.swift */; };
+		5D41424526E7F65000111FB2 /* CryptoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D41424426E7F65000111FB2 /* CryptoDetailViewModel.swift */; };
+		5D41424726E7F66D00111FB2 /* CryptoDetailViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D41424626E7F66D00111FB2 /* CryptoDetailViewModelDelegate.swift */; };
+		5D41424926E8042700111FB2 /* CryptoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D41424826E8042700111FB2 /* CryptoDetailViewController.swift */; };
 		5D432AEE26E103D40002472C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D432AED26E103D40002472C /* AppDelegate.swift */; };
-		5D432AF226E103D40002472C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D432AF126E103D40002472C /* ViewController.swift */; };
 		5D432AF726E103D70002472C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D432AF626E103D70002472C /* Assets.xcassets */; };
 		5D432AFA26E103D70002472C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D432AF826E103D70002472C /* LaunchScreen.storyboard */; };
 		5D432B0526E103D80002472C /* crypto_tableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D432B0426E103D80002472C /* crypto_tableTests.swift */; };
@@ -65,9 +67,11 @@
 		5D41423B26E7C63D00111FB2 /* DependencyResolving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyResolving.swift; sourceTree = "<group>"; };
 		5D41423D26E7CE1900111FB2 /* CryptoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCell.swift; sourceTree = "<group>"; };
 		5D41424226E7F2BD00111FB2 /* CryptoDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoDetailCoordinator.swift; sourceTree = "<group>"; };
+		5D41424426E7F65000111FB2 /* CryptoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoDetailViewModel.swift; sourceTree = "<group>"; };
+		5D41424626E7F66D00111FB2 /* CryptoDetailViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoDetailViewModelDelegate.swift; sourceTree = "<group>"; };
+		5D41424826E8042700111FB2 /* CryptoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoDetailViewController.swift; sourceTree = "<group>"; };
 		5D432AEA26E103D40002472C /* crypto-table.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "crypto-table.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D432AED26E103D40002472C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5D432AF126E103D40002472C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5D432AF626E103D70002472C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D432AF926E103D70002472C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D432AFB26E103D70002472C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -127,6 +131,8 @@
 			children = (
 				5D41422E26E7BD7E00111FB2 /* CryptoTableViewModel.swift */,
 				5D41423426E7C20300111FB2 /* CryptoTableViewModelDelegate.swift */,
+				5D41424426E7F65000111FB2 /* CryptoDetailViewModel.swift */,
+				5D41424626E7F66D00111FB2 /* CryptoDetailViewModelDelegate.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -136,6 +142,7 @@
 			children = (
 				5D41423226E7BDC700111FB2 /* CryptoTableViewController.swift */,
 				5D41423D26E7CE1900111FB2 /* CryptoCell.swift */,
+				5D41424826E8042700111FB2 /* CryptoDetailViewController.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -180,7 +187,6 @@
 				5D816B7626E11A6C00CCE453 /* Networking */,
 				5DAED44D26E109DB00AE43E5 /* Coordinators */,
 				5D432AED26E103D40002472C /* AppDelegate.swift */,
-				5D432AF126E103D40002472C /* ViewController.swift */,
 				5D432AF626E103D70002472C /* Assets.xcassets */,
 				5D432AF826E103D70002472C /* LaunchScreen.storyboard */,
 				5D432AFB26E103D70002472C /* Info.plist */,
@@ -416,15 +422,17 @@
 				5DF6FA6726E6193D00A9038E /* CryptoService.swift in Sources */,
 				5DF6FA6526E617C300A9038E /* CryptoLive.swift in Sources */,
 				5DF6FA6B26E69F3300A9038E /* CryptoAPIManager.swift in Sources */,
+				5D41424526E7F65000111FB2 /* CryptoDetailViewModel.swift in Sources */,
 				5D41423326E7BDC700111FB2 /* CryptoTableViewController.swift in Sources */,
 				5D41422C26E79AAC00111FB2 /* CryptoServiceType.swift in Sources */,
-				5D432AF226E103D40002472C /* ViewController.swift in Sources */,
+				5D41424926E8042700111FB2 /* CryptoDetailViewController.swift in Sources */,
 				5DAED44F26E109F000AE43E5 /* RootCoordinator.swift in Sources */,
 				5D41423E26E7CE1900111FB2 /* CryptoCell.swift in Sources */,
 				5D41422726E799CB00111FB2 /* APIManaging.swift in Sources */,
 				5D41423A26E7C62A00111FB2 /* DefaultDependencyContainer.swift in Sources */,
 				5D41424326E7F2BD00111FB2 /* CryptoDetailCoordinator.swift in Sources */,
 				5D41422F26E7BD7E00111FB2 /* CryptoTableViewModel.swift in Sources */,
+				5D41424726E7F66D00111FB2 /* CryptoDetailViewModelDelegate.swift in Sources */,
 				5D41423726E7C56300111FB2 /* CryptoTableCoordinator.swift in Sources */,
 				5DAED45126E10A0E00AE43E5 /* Coordinating.swift in Sources */,
 				5D432AEE26E103D40002472C /* AppDelegate.swift in Sources */,
