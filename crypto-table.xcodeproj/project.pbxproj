@@ -30,6 +30,8 @@
 		5DAED44F26E109F000AE43E5 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAED44E26E109F000AE43E5 /* RootCoordinator.swift */; };
 		5DAED45126E10A0E00AE43E5 /* Coordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAED45026E10A0E00AE43E5 /* Coordinating.swift */; };
 		5DC6233D26E8F8F3008096A8 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC6233C26E8F8F3008096A8 /* SDWebImage */; };
+		5DDA596D26E92F3600A4BCC8 /* CryptoTableViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDA596C26E92F3600A4BCC8 /* CryptoTableViewModelTests.swift */; };
+		5DDA596F26E931F600A4BCC8 /* CryptoDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDA596E26E931F600A4BCC8 /* CryptoDetailViewModelTests.swift */; };
 		5DEF62B026E7833600C005DE /* CryptoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEF62AF26E7833600C005DE /* CryptoList.swift */; };
 		5DEF62B226E78A6D00C005DE /* CryptoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEF62B126E78A6D00C005DE /* CryptoResponse.swift */; };
 		5DEF62B426E78A8A00C005DE /* CryptoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEF62B326E78A8A00C005DE /* CryptoError.swift */; };
@@ -85,6 +87,8 @@
 		5D816B7926E17AC600CCE453 /* CryptoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoRouter.swift; sourceTree = "<group>"; };
 		5DAED44E26E109F000AE43E5 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		5DAED45026E10A0E00AE43E5 /* Coordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinating.swift; sourceTree = "<group>"; };
+		5DDA596C26E92F3600A4BCC8 /* CryptoTableViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTableViewModelTests.swift; sourceTree = "<group>"; };
+		5DDA596E26E931F600A4BCC8 /* CryptoDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoDetailViewModelTests.swift; sourceTree = "<group>"; };
 		5DEF62AF26E7833600C005DE /* CryptoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoList.swift; sourceTree = "<group>"; };
 		5DEF62B126E78A6D00C005DE /* CryptoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoResponse.swift; sourceTree = "<group>"; };
 		5DEF62B326E78A8A00C005DE /* CryptoError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoError.swift; sourceTree = "<group>"; };
@@ -199,6 +203,7 @@
 		5D432B0326E103D80002472C /* crypto-tableTests */ = {
 			isa = PBXGroup;
 			children = (
+				5DDA596A26E92E9B00A4BCC8 /* ViewModels */,
 				5D41422826E79A8400111FB2 /* Mocks */,
 				5DEF62B626E7941200C005DE /* Models */,
 				5D432B0426E103D80002472C /* crypto_tableTests.swift */,
@@ -235,6 +240,15 @@
 				5D41424226E7F2BD00111FB2 /* CryptoDetailCoordinator.swift */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		5DDA596A26E92E9B00A4BCC8 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5DDA596C26E92F3600A4BCC8 /* CryptoTableViewModelTests.swift */,
+				5DDA596E26E931F600A4BCC8 /* CryptoDetailViewModelTests.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		5DEF62B626E7941200C005DE /* Models */ = {
@@ -452,8 +466,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DDA596F26E931F600A4BCC8 /* CryptoDetailViewModelTests.swift in Sources */,
 				5DEF62B826E7942500C005DE /* CryptoListTests.swift in Sources */,
 				5D41422A26E79A9700111FB2 /* CryptoServiceMock.swift in Sources */,
+				5DDA596D26E92F3600A4BCC8 /* CryptoTableViewModelTests.swift in Sources */,
 				5D432B0526E103D80002472C /* crypto_tableTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
