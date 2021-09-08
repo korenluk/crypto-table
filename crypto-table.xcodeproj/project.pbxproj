@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -29,6 +29,7 @@
 		5D816B7A26E17AC600CCE453 /* CryptoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D816B7926E17AC600CCE453 /* CryptoRouter.swift */; };
 		5DAED44F26E109F000AE43E5 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAED44E26E109F000AE43E5 /* RootCoordinator.swift */; };
 		5DAED45126E10A0E00AE43E5 /* Coordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAED45026E10A0E00AE43E5 /* Coordinating.swift */; };
+		5DC6233D26E8F8F3008096A8 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC6233C26E8F8F3008096A8 /* SDWebImage */; };
 		5DEF62B026E7833600C005DE /* CryptoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEF62AF26E7833600C005DE /* CryptoList.swift */; };
 		5DEF62B226E78A6D00C005DE /* CryptoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEF62B126E78A6D00C005DE /* CryptoResponse.swift */; };
 		5DEF62B426E78A8A00C005DE /* CryptoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEF62B326E78A8A00C005DE /* CryptoError.swift */; };
@@ -98,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DC6233D26E8F8F3008096A8 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +282,9 @@
 			dependencies = (
 			);
 			name = "crypto-table";
+			packageProductDependencies = (
+				5DC6233C26E8F8F3008096A8 /* SDWebImage */,
+			);
 			productName = "crypto-table";
 			productReference = 5D432AEA26E103D40002472C /* crypto-table.app */;
 			productType = "com.apple.product-type.application";
@@ -351,6 +356,9 @@
 				Base,
 			);
 			mainGroup = 5D432AE126E103D40002472C;
+			packageReferences = (
+				5DC6233B26E8F8F2008096A8 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 5D432AEB26E103D40002472C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -763,6 +771,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5DC6233B26E8F8F2008096A8 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.11.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5DC6233C26E8F8F3008096A8 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DC6233B26E8F8F2008096A8 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5D432AE226E103D40002472C /* Project object */;
 }
