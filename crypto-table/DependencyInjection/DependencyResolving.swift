@@ -29,8 +29,8 @@ extension DependencyResolving {
         return viewController
     }
 
-    func resolveCryptoDetailViewModel() -> CryptoDetailViewModel {
-        return CryptoDetailViewModel(cryptoService: resolveCryptoService())
+    func resolveCryptoDetailViewModel(crypto: String) -> CryptoDetailViewModel {
+        return CryptoDetailViewModel(crypto: crypto, cryptoService: resolveCryptoService())
     }
 
     func resolveCryptoService() -> CryptoServiceType {
