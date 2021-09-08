@@ -8,14 +8,15 @@
 import Foundation
 
 protocol CryptoTableViewModelDelegate: AnyObject {
-    func didUpdateCrypto()
+    func didDownloadCrypto()
     func didFail(with error: Error)
 }
 
 protocol CryptoTableViewModeling: AnyObject {
     var delegate: CryptoTableViewModelDelegate? { get set }
 
-    func updateCrypto()
+    func downloadCrypto()
     func numberOfCrypto() -> Int
     func crypto(at index: Int) -> CryptoRow
+    func getTarget() -> String
 }

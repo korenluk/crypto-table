@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CryptoTableCoordinating {
-    //func select(crypto: CryptoList)
+    func select(crypto: String)
 }
 
 class CryptoTableCoordinator: CryptoTableCoordinating {

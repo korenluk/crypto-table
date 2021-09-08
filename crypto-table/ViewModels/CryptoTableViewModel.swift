@@ -14,12 +14,13 @@ class CryptoTableViewModel: CryptoTableViewModeling {
 
     private let cryptoService: CryptoServiceType
     private var cryptoRows = [CryptoRow]()
+    private var target = ""
 
     init(cryptoService: CryptoServiceType) {
         self.cryptoService = cryptoService
     }
 
-    func updateCrypto() {
+    func downloadCrypto() {
         fetchCrypto()
     }
 
@@ -29,6 +30,10 @@ class CryptoTableViewModel: CryptoTableViewModeling {
 
     func crypto(at index: Int) -> CryptoRow {
         cryptoRows[index]
+    }
+
+    func getTarget() -> String {
+        return target
     }
 }
 
@@ -49,11 +54,12 @@ private extension CryptoTableViewModel {
 
             switch result {
             case let .success(cryptoLive):
+                self.target = cryptoLive.target
                 for (key, value) in cryptoLive.rates {
                     self.cryptoRows.append(CryptoRow(name: key, price: value))
                 }
                 self.cryptoRows.sort()
-                self.delegate?.didUpdateCrypto()
+                self.delegate?.didDownloadCrypto()
             case let .failure(error):
                 self.delegate?.didFail(with: error)
             }

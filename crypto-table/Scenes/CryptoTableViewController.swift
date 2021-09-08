@@ -23,7 +23,7 @@ class CryptoTableViewController: UIViewController, CryptoTableViewControlling {
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(CryptoCell.self, forCellReuseIdentifier: "cellid")
         table.dataSource = self
-
+        table.delegate = self
         return table
     }()
 
@@ -41,13 +41,11 @@ class CryptoTableViewController: UIViewController, CryptoTableViewControlling {
         table.isHidden = true
         setup()
         viewModel.delegate = self
-        viewModel.updateCrypto()
+        viewModel.downloadCrypto()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         print("Appear TABLE")
-        viewModel.updateCrypto()
-        table.reloadData()
     }
 
     func setup() {
@@ -64,9 +62,11 @@ class CryptoTableViewController: UIViewController, CryptoTableViewControlling {
 }
 
 extension CryptoTableViewController: CryptoTableViewModelDelegate {
-    func didUpdateCrypto() {
+    func didDownloadCrypto() {
         table.isHidden = false
         table.reloadData()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: viewModel.getTarget(), style: .plain, target: nil, action: nil)
+        navigationItem.rightBarButtonItem?.tintColor = .white
         loadingView.stopAnimating()
         loadingView.isHidden = true
     }
@@ -88,5 +88,12 @@ extension CryptoTableViewController: UITableViewDataSource {
         cell.detailTextLabel?.text = crypto.price.description + " $"
         return cell
     }
+}
 
+extension CryptoTableViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let crypto = viewModel.crypto(at: indexPath.row).name
+        print(crypto)
+        coordinator?.select(crypto: crypto)
+    }
 }
