@@ -7,7 +7,7 @@
 
 protocol CryptoDetailViewModelDelegate: AnyObject {
     func didDownloadCrypto()
-    func didFail(with error: Error)
+    func didFail(with error: CryptoError)
 }
 
 protocol CryptoDetailViewModeling: AnyObject {

@@ -47,6 +47,8 @@ class CryptoDetailViewController: UIViewController, CryptoDetailViewControlling 
         view.addSubview(maxSupply)
         view.addSubview(image)
 
+        navigationItem.title = viewModel.crypto
+
         image.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
         image.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         image.widthAnchor.constraint(equalToConstant: 300).isActive = true
@@ -70,13 +72,12 @@ class CryptoDetailViewController: UIViewController, CryptoDetailViewControlling 
             return
         }
 
-        navigationItem.title = cryptoDetail.name
-
         symbol.text = "Symbol: " + cryptoDetail.symbol
         name.text = "Name: " + cryptoDetail.name
         nameFull.text = "Full Name: " + cryptoDetail.nameFull
         maxSupply.text = "Max Supply: " + cryptoDetail.maxSupply
-        image.sd_setImage(with: URL(string: viewModel.cryptoDetail?.iconUrl ?? ""), placeholderImage: UIImage(named: "b.square.fill"))
+        image.sd_setImage(with: URL(string: viewModel.cryptoDetail?.iconUrl ?? ""),
+                          placeholderImage: UIImage(named: "dollar"))
     }
 
     func makeLabel() -> UILabel {
@@ -92,7 +93,7 @@ extension CryptoDetailViewController: CryptoDetailViewModelDelegate {
         setupData()
     }
 
-    func didFail(with error: Error) {
+    func didFail(with error: CryptoError) {
         print(error)
     }
 }

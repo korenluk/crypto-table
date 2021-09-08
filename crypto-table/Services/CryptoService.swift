@@ -14,11 +14,11 @@ class CryptoService: CryptoServiceType {
         self.apiManager = apiManager
     }
 
-    func fetchCryptoLive(completion: @escaping (Result<CryptoLive, Error>) -> Void) {
+    func fetchCryptoLive(completion: @escaping (Result<CryptoLive, CryptoError>) -> Void) {
         apiManager.request(request: CryptoRouter.live, completion: completion)
     }
 
-    func fetchCryptoList(completion: @escaping (Result<CryptoList, Error>) -> Void) {
+    func fetchCryptoList(completion: @escaping (Result<CryptoList, CryptoError>) -> Void) {
         apiManager.request(request: CryptoRouter.list, completion: completion)
     }
 }

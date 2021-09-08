@@ -16,7 +16,7 @@ final class CryptoAPIManager {
         return URLSession(configuration: sessionConfiguration)
     }()
 
-    private func decode<T: Decodable>(data: Data, completion: @escaping (Swift.Result<T, Error>) -> Void) {
+    private func decode<T: Decodable>(data: Data, completion: @escaping (Swift.Result<T, CryptoError>) -> Void) {
         do {
             let cryptoResponse = try self.jsonDecoder.decode(CryptoResponse.self, from: data)
             if cryptoResponse.success == true {
@@ -26,16 +26,23 @@ final class CryptoAPIManager {
                 }
             } else {
                 let cryptoError = try self.jsonDecoder.decode(CryptoError.self, from: data)
-                completion(.failure(cryptoError))
+                DispatchQueue.main.async {
+                    completion(.failure(cryptoError))
+                }
             }
         } catch {
-            completion(.failure(error))
+            DispatchQueue.main.async {
+                completion(.failure(CryptoError(success: false,
+                                                error: CryptoDetailError(code: 0,
+                                                                         type: "Decoding error",
+                                                                         info: error.localizedDescription))))
+            }
         }
     }
 }
 
 extension CryptoAPIManager: APIManaging {
-    func request<T: Decodable>(request: URLRequest, completion: @escaping (Swift.Result<T, Error>) -> Void) {
+    func request<T: Decodable>(request: URLRequest, completion: @escaping (Swift.Result<T, CryptoError>) -> Void) {
 
         if let cachedData = URLCache.shared.cachedResponse(for: request) {
             print("Cached data in bytes:", cachedData.data)
@@ -47,18 +54,22 @@ extension CryptoAPIManager: APIManaging {
 
                 if let httpResponse = response as? HTTPURLResponse,
                    !(200..<300).contains(httpResponse.statusCode) {
-                    completion(.failure(CryptoError(success: false,
-                                                    error: CryptoDetailError(code: httpResponse.statusCode,
-                                                                             type: "Bad Response",
-                                                                             info: httpResponse.description))))
+                    DispatchQueue.main.async {
+                        completion(.failure(CryptoError(success: false,
+                                                        error: CryptoDetailError(code: httpResponse.statusCode,
+                                                                                 type: "Bad Response",
+                                                                                 info: httpResponse.description))))
+                    }
                     return
                 }
 
                 guard let data = data, let response = response else {
-                    completion(.failure(CryptoError(success: false,
-                                                    error: CryptoDetailError(code: 0,
-                                                                             type: "Data",
-                                                                             info: "Data corupted"))))
+                    DispatchQueue.main.async {
+                        completion(.failure(CryptoError(success: false,
+                                                        error: CryptoDetailError(code: 0,
+                                                                                 type: "Network Error",
+                                                                                 info: "Network Error"))))
+                    }
                     return
                 }
 

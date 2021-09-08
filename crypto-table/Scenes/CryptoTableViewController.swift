@@ -66,14 +66,24 @@ class CryptoTableViewController: UIViewController, CryptoTableViewControlling {
 extension CryptoTableViewController: CryptoTableViewModelDelegate {
     func didDownloadCrypto() {
         table.reloadData()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: viewModel.getTarget(), style: .plain, target: nil, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: viewModel.getTarget(),
+                                                            style: .plain,
+                                                            target: nil,
+                                                            action: nil)
         navigationItem.rightBarButtonItem?.tintColor = .white
         loadingView.stopAnimating()
         loadingView.isHidden = true
     }
 
-    func didFail(with error: Error) {
-        print(error)
+    func didFail(with error: CryptoError) {
+        let alertController = UIAlertController(title: "ERROR",
+                                                message: error.error.info,
+                                                preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Retry", style: .default, handler: { _ in
+            self.viewModel.downloadCrypto()
+        }))
+
+        present(alertController, animated: true, completion: nil)
     }
 }
 

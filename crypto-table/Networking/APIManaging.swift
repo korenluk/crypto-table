@@ -7,5 +7,5 @@
 import Foundation
 
 protocol APIManaging {
-    func request<T: Decodable>(request: URLRequest, completion: @escaping (Swift.Result<T, Error>) -> Void)
+    func request<T: Decodable>(request: URLRequest, completion: @escaping (Swift.Result<T, CryptoError>) -> Void)
 }

@@ -8,6 +8,6 @@
 import Foundation
 
 protocol CryptoServiceType {
-    func fetchCryptoLive(completion: @escaping (Result<CryptoLive, Error>) -> Void)
-    func fetchCryptoList(completion: @escaping (Result<CryptoList, Error>) -> Void)
+    func fetchCryptoLive(completion: @escaping (Result<CryptoLive, CryptoError>) -> Void)
+    func fetchCryptoList(completion: @escaping (Result<CryptoList, CryptoError>) -> Void)
 }

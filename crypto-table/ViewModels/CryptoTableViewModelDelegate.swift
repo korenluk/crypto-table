@@ -9,7 +9,7 @@ import Foundation
 
 protocol CryptoTableViewModelDelegate: AnyObject {
     func didDownloadCrypto()
-    func didFail(with error: Error)
+    func didFail(with error: CryptoError)
 }
 
 protocol CryptoTableViewModeling: AnyObject {
